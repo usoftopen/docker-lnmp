@@ -148,5 +148,13 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 
 腾讯云加速器：https://www.qcloud.com/document/product/457/7207
 
+## 更新日志
+
+### V3.1（2019-01-23）
+
+    升级了部分组件及 PHP 扩展的版本
+    crontab 与 PHP 组件解耦，放到 Tools 组件里
+    新增 Swoole 扩展
+
 ### License
 MIT
