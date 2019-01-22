@@ -1,0 +1,90 @@
+version: '3'
+services:
+
+  ### Nginx container #########################################
+
+  nginx:
+      image: nginx:alpine
+      ports:
+        - "${HTTP_PORT}:80"
+        - "${HTTPS_PORT}:443"
+      volumes:
+        - ./work/wwwroot:/etc/nginx/html/:rw
+        - ./work/components/nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
+        - ./work/components/nginx/config/conf.d:/etc/nginx/conf.d:ro
+        - ./work/components/nginx/log:/var/log/nginx:rw
+      restart: always
+      networks:
+        - net-php
+
+  ### PHP container #########################################
+
+  php:
+      build:
+        context: ./build/php
+        args:
+          TIME_ZONE: ${GLOBAL_TIME_ZONE}
+          CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
+      volumes:
+        - ./work/wwwroot:/etc/nginx/html:rw
+        - ./work/components/php/config/php.ini:/usr/local/etc/php/php.ini:ro
+        - ./work/components/php/config/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
+        - ./work/components/php/log:/var/log:rw
+        - ./work/components/php/start.sh:/home/start.sh:rw
+      restart: always
+      networks:
+        - net-php
+        - net-mysql
+        - net-redis
+
+  ### Mysql container #########################################
+
+  mysql:
+      image: mysql:5.6
+      ports:
+        - "${MYSQL_PORT}:3306"
+      volumes:
+        - ./work/components/mysql/data:/var/lib/mysql:rw
+        - ./work/components/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
+        - ./work/components/mysql/log:/var/log/mysql:rw
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
+      networks:
+        - net-mysql
+
+  ### Redis container #########################################
+
+  redis:
+      image: redis:latest
+      ports:
+        - "${REDIS_PORT}:6379"
+      volumes:
+        - ./work/components/redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
+        - ./work/components/redis/log/redis.log:/var/log/redis/redis.log:rw
+      restart: always
+      networks:
+        - net-redis
+
+  ### Tools container #########################################
+
+  tools:
+      build:
+        context: ./build/tools
+        args:
+          TIME_ZONE: ${GLOBAL_TIME_ZONE}
+          CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
+      volumes:
+        - ./work/components/tools/start.sh:/home/start.sh:rw
+        - ./work/components/tools/backup:/backup:rw
+        - ./work/components/tools/cron.d:/etc/cron.d:rw
+      restart: always
+      networks:
+        - net-php
+        - net-mysql
+        - net-redis
+
+networks:
+  net-php:
+  net-mysql:
+  net-redis:
