@@ -14,6 +14,7 @@ services:
         - ./work/components/nginx/config/conf.d:/etc/nginx/conf.d:ro
         - ./work/components/nginx/log:/var/log/nginx:rw
       restart: always
+      privileged: true
       networks:
         - net-php
 
@@ -32,6 +33,7 @@ services:
         - ./work/components/php/log:/var/log:rw
         - ./work/components/php/start.sh:/home/start.sh:rw
       restart: always
+      privileged: true
       networks:
         - net-php
         - net-mysql
@@ -48,6 +50,7 @@ services:
         - ./work/components/mysql/config/mysql.cnf:/etc/mysql/conf.d/mysql.cnf:ro
         - ./work/components/mysql/log:/var/log/mysql:rw
       restart: always
+      privileged: true
       environment:
         MYSQL_ROOT_PASSWORD: ${MYSQL_PASSWORD}
       networks:
@@ -63,6 +66,7 @@ services:
         - ./work/components/redis/config/redis.conf:/usr/local/etc/redis/redis.conf:ro
         - ./work/components/redis/log/redis.log:/var/log/redis/redis.log:rw
       restart: always
+      privileged: true
       networks:
         - net-redis
 
@@ -79,6 +83,7 @@ services:
         - ./work/components/tools/backup:/backup:rw
         - ./work/components/tools/cron.d:/etc/cron.d:rw
       restart: always
+      privileged: true
       networks:
         - net-php
         - net-mysql
