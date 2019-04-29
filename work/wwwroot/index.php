@@ -37,7 +37,7 @@
 <p align="center" class="mine">Docker LNMP</p>
 
 <p class="desc">
-	Version：3.1<br />
+	Version：3.2<br />
 	Time：<?= date_default_timezone_get() . "&nbsp;/&nbsp;" . date("Y-m-d H:i:s");?>
 </p>
 
@@ -45,7 +45,7 @@
 	<a href="https://github.com/exc-soft/docker-lnmp" target="_blank">Get Documentation</a>
 
 	<p style="color:#ccc;font-size:12px;margin-top:100px;">
-		&copy; <?php echo date("Y")?>&nbsp;exc soft
+		&copy; <?php echo date("Y")?>&nbsp;usoftglobal.com
 	</p>
 </footer>
 
