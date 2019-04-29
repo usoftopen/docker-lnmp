@@ -10,7 +10,7 @@ COPY sources.list /etc/apt/china.sources.list
 RUN if [ ${CHANGE_SOURCE} = true ]; then \
         mv /etc/apt/sources.list /etc/apt/source.list.bak ; \
         mv /etc/apt/china.sources.list /etc/apt/sources.list ; \
-    fi \
+    fi; \
     \
     apt-get update && apt-get install -y --no-install-recommends \
     tzdata \
