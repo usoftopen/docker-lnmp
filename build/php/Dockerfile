@@ -12,6 +12,10 @@ RUN \
     ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime ; \ 
     echo $TIME_ZONE > /etc/timezone ; \
     \
+    # ⬇ 安装 PHP Composer
+    mv /home/resource/composer.phar /usr/local/bin/composer ; \
+    chmod 755 /usr/local/bin/composer ; \
+    \
     # ⬇ 替换源
     rm -rf /etc/apt/sources.list.d/buster.list \ 
     if [ ${CHANGE_SOURCE} = true ]; then \
@@ -35,10 +39,6 @@ RUN \
     wget \
     libmcrypt-dev \
     libmhash-dev ; \
-    \
-    # ⬇ 安装 PHP Composer
-    mv /home/resource/composer.phar /usr/local/bin/composer ; \
-    chmod 755 /usr/local/bin/composer ; \
     \
     # ⬇ 清理
     rm -rf /var/lib/apt/lists/* ; \
