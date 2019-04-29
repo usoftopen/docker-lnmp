@@ -154,7 +154,6 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 
 * 优化了 Dockerfile，精简构建的镜像层
 * 去掉了启动 fpm 引导文件
-* tools 的镜像改为 alpine（更小）
 
 ### V3.1（2019-01-23）
 

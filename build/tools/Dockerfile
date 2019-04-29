@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM ubuntu:18.04
 
 ARG CHANGE_SOURCE=false
 
