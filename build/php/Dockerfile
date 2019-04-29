@@ -38,12 +38,7 @@ RUN \
     git \
     wget \
     libmcrypt-dev \
-    libmhash-dev ; \
-    \
-    # ⬇ 清理
-    rm -rf /var/lib/apt/lists/* ; \
-    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
-    rm -rf /home/resource ;
+    libmhash-dev ;
 
 ####################################################################################
 # 安装 PHP 扩展
@@ -64,6 +59,11 @@ RUN docker-php-ext-configure gd \
     \
     # ⬇ Mcrypt
     pecl install /home/resource/mcrypt-1.0.2.tgz ; \
-	echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ;
+	echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ; \
+    \
+    # ⬇ 清理
+    rm -rf /var/lib/apt/lists/* ; \
+    apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
+    rm -rf /home/resource ;
 
 CMD ["php-fpm"]
