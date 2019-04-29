@@ -1,4 +1,4 @@
-# Docker LNMP 3.1
+# Docker LNMP 3.2
 
 Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
@@ -15,7 +15,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     PHP：php-fpm 7.3
     MySQL：5.6
     Redis：最新稳定版
-    Tools：Ubuntu Latest，作为辅助工具容器如计划任务备份数据等
+    Tools：Alpine latest，作为辅助工具容器如计划任务备份数据等
 
 ### 目录结构
 
@@ -32,7 +32,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
 ## 开始安装
 
-没有安装 Docker 的同学移步 [安装教程](https://github.com/exc-soft/docker-lnmp#安装-docker-及相关工具)
+没有安装 Docker 的同学移步 [安装教程](https://github.com/exc-soft/docker-lnmp#安装-docker-及相关工具)，如果你有足够的时间强烈建议通读 [Docker — 从入门到实践](https://yeasy.gitbooks.io/docker_practice/content/)
 
     cd ~/
     git clone https://github.com/exc-soft/docker-lnmp.git
@@ -55,7 +55,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 ### 常用操作命令
 
     # 查看当前启动的容器
-    sudo docker ps
+    sudo docker-compose ps
     
     # 启动部分服务在后边加服务名，不加表示启动所有，-d 表示在后台运行
     sudo docker-compose up [nginx|php| ...] -d
