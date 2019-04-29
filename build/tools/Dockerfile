@@ -25,7 +25,7 @@ RUN if [ ${CHANGE_SOURCE} = true ]; then \
     rm -rf /var/lib/apt/lists/* ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
     \
-    ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime \
+    ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime ; \
     echo $TIME_ZONE > /etc/timezone
 
 CMD ["/etc/init.d/cron", "start"]
