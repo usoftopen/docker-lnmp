@@ -27,6 +27,7 @@ RUN \
     # ⬇ 更新、安装基础组件
     apt-get update && apt-get install -y --no-install-recommends \
     procps \
+    libxml++2.6-dev \
     libpq-dev \
     libfreetype6-dev \
     libjpeg62-turbo-dev \
@@ -47,7 +48,7 @@ RUN \
 RUN docker-php-ext-configure gd \
     --with-freetype-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ ; \
-    docker-php-ext-install gd pdo_mysql mysqli pgsql pdo_pgsql ; \
+    docker-php-ext-install gd pdo_mysql mysqli pgsql pdo_pgsql soap ; \
     \
     # ⬇ Redis
     pecl install /home/resource/redis-4.2.0.tgz ; \ 
