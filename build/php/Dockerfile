@@ -21,7 +21,7 @@ RUN \
     if [ ${CHANGE_SOURCE} = true ]; then \
         mv /etc/apt/sources.list /etc/apt/source.list.bak ; \
         mv /home/resource/sources.list /etc/apt/sources.list ; \
-        composer config -g repo.packagist composer https://packagist.phpcomposer.com ; \
+        composer config -g repo.packagist composer https://packagist.laravel-china.org ; \
     fi \
     \
     # ⬇ 更新、安装基础组件
