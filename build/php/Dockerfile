@@ -66,5 +66,3 @@ RUN docker-php-ext-configure gd \
     rm -rf /var/lib/apt/lists/* ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
     rm -rf /home/resource ;
-
-CMD ["php-fpm"]
