@@ -1,4 +1,4 @@
-FROM php:7.3-fpm
+FROM php:7.2.10-fpm
 
 COPY resource /home/resource
 
@@ -29,7 +29,9 @@ RUN \
     procps \
     libtinfo5 \
     libpq-dev \
-    libjpeg-dev \
+    libfreetype6-dev \
+    libjpeg62-turbo-dev \
+    libpng-dev \
     libmcrypt-dev \
     libmhash-dev \
     ntpdate \
@@ -42,7 +44,7 @@ RUN \
 RUN docker-php-ext-configure gd \
     --with-freetype-dir=/usr/include/ \
     --with-jpeg-dir=/usr/include/ ; \
-    docker-php-ext-install gd pdo_mysql mysqli pgsql pdo_pgsql soap ; \
+    docker-php-ext-install -j$(nproc) gd pdo_mysql mysqli pgsql pdo_pgsql soap ; \
     \
     # ⬇ Redis
     pecl install /home/resource/redis-4.2.0.tgz ; \ 
