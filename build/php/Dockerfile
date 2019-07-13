@@ -25,21 +25,15 @@ RUN \
     fi; \
     \
     # ⬇ 更新、安装基础组件
-    apt-get update && apt-get install -y --no-install-recommends \
+    apt-get update && apt-get install -y --allow-remove-essential --no-install-recommends \
     procps \
-    libxml++2.6-dev \
+    libtinfo5 \
     libpq-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    ntpdate \
-    cron \
-    vim \
-    unzip \
-    git \
-    wget \
+    libjpeg-dev \
     libmcrypt-dev \
-    libmhash-dev ;
+    libmhash-dev \
+    ntpdate \
+    cron;
 
 ####################################################################################
 # 安装 PHP 扩展
@@ -66,4 +60,3 @@ RUN docker-php-ext-configure gd \
     rm -rf /var/lib/apt/lists/* ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
     rm -rf /home/resource ;
-    
