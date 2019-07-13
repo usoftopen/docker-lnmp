@@ -9,7 +9,8 @@ services:
         - "${HTTP_PORT}:80"
         - "${HTTPS_PORT}:443"
       volumes:
-        - ./work/wwwroot:/etc/nginx/html/:rw
+        ###- ./work/wwwroot:/etc/nginx/html/:rw
+        - ${PROJECT_FOLDER}:/etc/nginx/html/:rw
         - ./work/components/nginx/config/nginx.conf:/etc/nginx/nginx.conf:ro
         - ./work/components/nginx/config/conf.d:/etc/nginx/conf.d:ro
         - ./work/components/nginx/log:/var/log/nginx:rw
@@ -27,7 +28,7 @@ services:
           TIME_ZONE: ${GLOBAL_TIME_ZONE}
           CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
       volumes:
-        - ./work/wwwroot:/etc/nginx/html:rw
+        - ${PROJECT_FOLDER}:/etc/nginx/html:rw
         - ./work/components/php/config/php.ini:/usr/local/etc/php/php.ini:ro
         - ./work/components/php/config/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
         - ./work/components/php/log:/var/log:rw
