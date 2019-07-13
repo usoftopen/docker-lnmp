@@ -1,3 +1,5 @@
+forked from exc-soft/docker-lnmp
+
 # Docker LNMP 3.3
 
 Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
@@ -16,6 +18,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
     MySQL：5.7
     Redis：最新稳定版
     Tools：Alpine latest，作为辅助工具容器如计划任务备份数据等
+    PHP Framework：yaf 3.0.7
 
 ### 目录结构
 
@@ -154,6 +157,7 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 
 * 升级了 mysql 版本到 7.3
 * 回退了 php 版本到 7.2.10，7.3 针对 gd 扩展有依赖问题
+* 增加 php extension：yaf 3.0.7
 
 ### V3.2（2019-04-29）
 
