@@ -13,7 +13,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
     Ningx：最新稳定版
     PHP：php-fpm 7.3
-    MySQL：5.6
+    MySQL：5.7
     Redis：最新稳定版
     Tools：Alpine latest，作为辅助工具容器如计划任务备份数据等
 
@@ -149,6 +149,10 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 腾讯云加速器：https://www.qcloud.com/document/product/457/7207
 
 ## 更新日志
+
+### V3.2.1（2019-07-13）
+
+* 升级了 mysql 版本到 7.3
 
 ### V3.2（2019-04-29）
 
