@@ -17,12 +17,12 @@ RUN \
     chmod 755 /usr/local/bin/composer ; \
     \
     # ⬇ 替换源
-    rm -rf /etc/apt/sources.list.d/buster.list \ 
+    rm -rf /etc/apt/sources.list.d/buster.list ; \
     if [ ${CHANGE_SOURCE} = true ]; then \
-        mv /etc/apt/sources.list /etc/apt/source.list.bak ; \
-        mv /home/resource/sources.list /etc/apt/sources.list ; \
+        mv /etc/apt/sources.list /etc/apt/source.list.bak; \ 
+        mv /home/resource/sources.list /etc/apt/sources.list; \
         composer config -g repo.packagist composer https://packagist.laravel-china.org ; \
-    fi \
+    fi; \
     \
     # ⬇ 更新、安装基础组件
     apt-get update && apt-get install -y --no-install-recommends \
@@ -60,9 +60,10 @@ RUN docker-php-ext-configure gd \
     \
     # ⬇ Mcrypt
     pecl install /home/resource/mcrypt-1.0.2.tgz ; \
-	echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ; \
+    echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ; \
     \
     # ⬇ 清理
     rm -rf /var/lib/apt/lists/* ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
     rm -rf /home/resource ;
+    
