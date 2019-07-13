@@ -58,7 +58,12 @@ RUN docker-php-ext-configure gd \
     pecl install /home/resource/mcrypt-1.0.2.tgz ; \
     echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ; \
     \
+    # ⬇ YAF
+    tar xzvf /home/resource/yaf-3.0.7.tgz && cd yaf-3.0.7 ; \
+    /usr/local/bin/phpize && ./configure && make && make install ; \
+    \
     # ⬇ 清理
     rm -rf /var/lib/apt/lists/* ; \
     apt-get purge -y --auto-remove -o APT::AutoRemove::RecommendsImportant=false ; \
     rm -rf /home/resource ;
+
