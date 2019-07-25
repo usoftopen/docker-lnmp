@@ -46,6 +46,10 @@ RUN docker-php-ext-configure gd \
     --with-jpeg-dir=/usr/include/ ; \
     docker-php-ext-install -j$(nproc) gd pdo_mysql mysqli pgsql pdo_pgsql soap ; \
     \
+    # ⬇ Xdebug
+    pecl install xdebug; \
+    docker-php-ext-enable xdebug ; \
+    \
     # ⬇ Redis
     pecl install /home/resource/redis-4.2.0.tgz ; \ 
     echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini ; \
