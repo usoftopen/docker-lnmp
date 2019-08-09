@@ -29,6 +29,8 @@ services:
           CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
       volumes:
         - ${PROJECT_FOLDER}:/etc/nginx/html/:rw
+        - ${PROJECT_FOLDER}/cronJobs:/etc/cron.d/cron-php:ro
+        - ./work/components/php/config/cronjob.sh:/etc/cronjob.sh:rw
         - ./work/components/php/config/php.ini:/usr/local/etc/php/php.ini:ro
         - ./work/components/php/config/php-fpm.conf:/usr/local/etc/php-fpm.d/www.conf:rw
         - ./work/components/php/log:/var/log:rw
