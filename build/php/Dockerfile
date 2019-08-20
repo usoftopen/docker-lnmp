@@ -29,6 +29,7 @@ RUN \
     procps \
     git \
     zip \
+    unzip \
     libtinfo5 \
     libpq-dev \
     libfreetype6-dev \
