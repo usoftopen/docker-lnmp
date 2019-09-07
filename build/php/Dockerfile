@@ -28,6 +28,9 @@ RUN \
     apt-get update && apt-get install -y --allow-remove-essential --no-install-recommends \
     libmagickwand-dev \
     procps \
+    git \
+    zip \
+    unzip \
     libtinfo5 \
     libpq-dev \
     libfreetype6-dev \
