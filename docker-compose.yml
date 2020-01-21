@@ -27,6 +27,7 @@ services:
         args:
           TIME_ZONE: ${GLOBAL_TIME_ZONE}
           CHANGE_SOURCE: ${GLOBAL_CHANGE_SOURCE}
+      working_dir: /etc/nginx/html/
       volumes:
         - ${PROJECT_FOLDER}:/etc/nginx/html/:rw
         - ${PROJECT_FOLDER}/cronJobs:/etc/cron.d/cron-php:ro
