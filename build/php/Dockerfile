@@ -1,4 +1,5 @@
-FROM php:7.4.2-fpm
+# 注意：更新对应版本的 php 检查更新对应替换的源是否一致，否则后续会有很多扩展安装失败
+FROM php:7.4-fpm
 
 COPY resource /home/resource
 
@@ -7,7 +8,7 @@ ARG TIME_ZONE=UTC
 
 ENV TIME_ZONE=${TIME_ZONE} LC_ALL=C.UTF-8
 
-RUN \
+RUN set -eux; \
     # ⬇ 修改时区
     ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime ; \ 
     echo $TIME_ZONE > /etc/timezone ; \
@@ -25,20 +26,25 @@ RUN \
     fi; \
     \
     # ⬇ 更新、安装基础组件
-    apt-get update && apt-get install -y --allow-remove-essential --no-install-recommends \
+    apt-get update; \
+    apt-get upgrade -y; \
+    apt-get install -y --allow-remove-essential --no-install-recommends \
+    libmemcached-dev \
+    libz-dev \
+    libpq-dev \
+    libjpeg-dev \
+    libpng-dev \
+    libfreetype6-dev \
+    libssl-dev \
+    libmcrypt-dev \
+    libonig-dev \
     libmagickwand-dev \
     procps \
+    libmhash-dev \
+    ntpdate \
     git \
     zip \
     unzip \
-    libtinfo5 \
-    libpq-dev \
-    libfreetype6-dev \
-    libjpeg62-turbo-dev \
-    libpng-dev \
-    libmcrypt-dev \
-    libmhash-dev \
-    ntpdate \
     cron;
 
 ####################################################################################
@@ -46,13 +52,13 @@ RUN \
 ####################################################################################
 
 RUN docker-php-ext-configure gd \
-    --with-freetype-dir=/usr/include/ \
-    --with-jpeg-dir=/usr/include/ ; \
+    --prefix=/usr \
+    --with-freetype\
+    --with-jpeg; \
     docker-php-ext-install -j$(nproc) gd pdo_mysql mysqli pgsql pdo_pgsql soap pcntl ; \
     \
     # ⬇ Imagick
     pecl install imagick && docker-php-ext-enable imagick; \
-    \
     # ⬇ Redis
     pecl install /home/resource/redis-4.2.0.tgz ; \ 
     echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini ; \

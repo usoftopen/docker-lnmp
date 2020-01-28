@@ -7,7 +7,9 @@
 			font-family:sans-serif;-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%
 		}
 		.mine{
-			font-size:30px;margin-top:200px;
+			font-weight: bold;
+			font-size:30px;
+			margin-top:200px;
 			color:#333;
 		}
 		.desc{
@@ -37,7 +39,7 @@
 <p align="center" class="mine">Docker LNMP</p>
 
 <p class="desc">
-	Version：3.3<br />
+	Version：3.4<br />
 	Time：<?= date_default_timezone_get() . "&nbsp;/&nbsp;" . date("Y-m-d H:i:s");?>
 </p>
 

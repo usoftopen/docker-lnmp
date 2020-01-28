@@ -1,4 +1,4 @@
-# Docker LNMP 3.3
+# Docker LNMP 3.4
 
 Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
@@ -12,7 +12,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 ### 组件（容器）及相关软件版本
 
     Ningx：最新稳定版
-    PHP：php-fpm 7.2
+    PHP：php-fpm 7.4
     MySQL：5.7
     Redis：最新稳定版
     Tools：Alpine latest，作为辅助工具容器如计划任务备份数据等
@@ -102,7 +102,7 @@ Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在�
 
         echo "<br />";
 
-        // 连接 Redis
+        // 连接 Redis, 注意如果外网连接默认端口为6399
         $redis = new Redis();
         $redis->connect('redis', 6379);
         $redis->set("test-key","hello");
@@ -149,6 +149,12 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 腾讯云加速器：https://www.qcloud.com/document/product/457/7207
 
 ## 更新日志
+
+### V3.4（2020-01-28）
+
+* 升级了 php 版本到 7.4，修复了依赖相关错误
+* 移除了 swoole 扩展支持
+* 修改 .env 默认 redis 对外端口为 6399，建议自行更改并设置密码提升安全性
 
 ### V3.3（2019-07-13）
 
