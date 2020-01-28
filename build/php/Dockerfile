@@ -64,7 +64,7 @@ RUN docker-php-ext-configure gd \
     echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini ; \
     \
     # ⬇ Mcrypt
-    pecl install /home/resource/mcrypt-1.0.2.tgz ; \
+    pecl install /home/resource/mcrypt-1.0.3.tgz ; \
     echo "extension=mcrypt.so" > /usr/local/etc/php/conf.d/mcrypt.ini ; \
     \
     # ⬇ 清理
