@@ -1,4 +1,4 @@
-FROM php:7.2.10-fpm
+FROM php:7.4.2-fpm
 
 COPY resource /home/resource
 
@@ -56,10 +56,6 @@ RUN docker-php-ext-configure gd \
     # ⬇ Redis
     pecl install /home/resource/redis-4.2.0.tgz ; \ 
     echo "extension=redis.so" > /usr/local/etc/php/conf.d/redis.ini ; \
-    \
-    # ⬇ Swoole
-    pecl install /home/resource/swoole-4.2.12.tgz ; \
-    echo "extension=swoole.so" > /usr/local/etc/php/conf.d/swoole.ini ; \
     \
     # ⬇ Mcrypt
     pecl install /home/resource/mcrypt-1.0.2.tgz ; \
