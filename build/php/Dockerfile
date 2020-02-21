@@ -56,6 +56,7 @@ RUN docker-php-ext-configure gd \
     --with-freetype\
     --with-jpeg; \
     docker-php-ext-install -j$(nproc) gd pdo_mysql mysqli pgsql pdo_pgsql soap pcntl sockets ; \
+    docker-php-ext-configure opcache --enable-opcache && docker-php-ext-install opcache ; \
     \
     # ⬇ Imagick
     pecl install imagick && docker-php-ext-enable imagick; \

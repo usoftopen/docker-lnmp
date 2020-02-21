@@ -1,4 +1,4 @@
-# Docker LNMP 3.4
+# Docker LNMP 3.5
 
 Docker LNMP 可以构建出基于 Docker 的 PHP 开发环境，其优势有在短时间内随意构建不同版本的相关服务、环境统一分布在不同服务器等，使开发者能够更专注于开发业务本身。
 
@@ -149,6 +149,10 @@ DaoCloud 加速器：http://guide.daocloud.io/dcs/daocloud-9153151.html
 腾讯云加速器：https://www.qcloud.com/document/product/457/7207
 
 ## 更新日志
+
+### V3.5（2020-02-21）
+
+* 重要更新，默认开启 opcache，接口性能至少提高 10 倍
 
 ### V3.4（2020-01-28）
 
